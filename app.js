@@ -65,7 +65,6 @@ app.use((req,res,next)=>{
     next();
 });
 
-const port = process.env.PORT || 5000;
 
 
 app.get('/',(req,res)=>{
@@ -83,6 +82,8 @@ app.get('/about' ,(req,res)=>{
     res.render('about');
     //console.log(req.name);
 });
-app.listen(port,()=>{
-    console.log(`server started at port ${port}`);
+
+app.set('port',(process.env.PORT || 5000));
+app.listen(app.get('port'),()=>{
+    console.log(`server started at port` + app.get('port'));
 }); 
